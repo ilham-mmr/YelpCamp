@@ -1,0 +1,58 @@
+<% layout('/layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6 offset-md-3">
+
+            <form id="add-form" action="/campgrounds" method="POST" class="validated-form" enctype="multipart/form-data"
+                novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="valid-feedback">Looks good</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <div class="valid-feedback">Looks good</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input id="price" name="campground[price]" type="text" class="form-control" placeholder="0.00"
+                            aria-describedby="price-label" required>
+                        <div class="valid-feedback">Looks good</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                        required> </textarea>
+                    <div class="valid-feedback">Looks good</div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Choose Images</label>
+                    <input class="form-control" name="image" type="file" id="image" multiple required>
+                    <div class="invalid-feedback">
+                        This campground would look much better with a picture.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button id="add-btn" class="btn btn-success">Add</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        const addForm = document.getElementById('add-form')
+        const addBtn = document.getElementById('add-btn');
+        addForm.addEventListener('submit', () => {
+            addBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...'
+            addBtn.disabled = true;
+        });
+
+    </script>
